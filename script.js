@@ -106,15 +106,25 @@ function convertWeight() {
 function convertTemperature() {
     if (event) event.preventDefault();
 
-    //Check if the fromUnit and toUnit are the same
-    if (fromUnit === toUnit) {
-        resultElement.innerText = `result: ${temperature} ${fromUnit} is equal to ${temperature} ${toUnit}`;
-        return;
-    }
-
     const temperature = Number(document.getElementById('temperature').value);
     const fromUnit = document.getElementById('fromUnit').value;
     const toUnit = document.getElementById('toUnit').value;
+
+    //Check if the fromUnit and toUnit are the same
+    if (fromUnit === toUnit) {
+        if (fromUnit === "celsius") {
+            document.getElementById('result').innerText = `result: ${temperature}°C is equal to ${temperature}°C`;
+            return;
+        }
+        else if (fromUnit === "fahrenheit") {
+            document.getElementById('result').innerText = `result: ${temperature}°F is equal to ${temperature}°F`;
+            return;
+        }
+        else if (fromUnit === "kelvin") {
+            document.getElementById('result').innerText = `result: ${temperature}K is equal to ${temperature}K`;
+            return;
+        }
+    }
 
     //Celsius
     if (fromUnit === "celsius" && toUnit === "fahrenheit") {
